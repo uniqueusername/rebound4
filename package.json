@@ -2,7 +2,11 @@
     "name": "rebound4",
     "version": "4.0.0",
     "description": "A simple chat server.",
-    "keywords": ["chat", "server", "socket.io"],
+    "keywords": [
+        "chat",
+        "server",
+        "socket.io"
+    ],
     "repository": "https://github.com/uniqueusername/rebound4",
     "author": "Aryan Jha <aryan@jha.io>",
     "dependencies": {
@@ -12,6 +16,6 @@
     "main": "server",
     "license": "MIT",
     "scripts": {
-      "start": "node server.js"
+        "start": "node server.js"
     }
 }
