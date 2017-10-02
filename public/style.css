@@ -7,16 +7,15 @@ body {
 
 #chat-area {
   display: flex;
-  height: 90vh;
+  height: 80vh;
   width: 100vw;
 
   flex-flow: column wrap;
 }
 
-textarea {
-  border: 1px solid black;
-  margin: 0;
+input {
   padding: 0;
+  margin: 0;
 }
 
 #message-input {
@@ -24,7 +23,24 @@ textarea {
   width: 100vw;
 }
 
+#username-input {
+  height: 9.8vh;
+  width: 80vw;
+}
+
+#username-submit {
+  height: 9.8vh;
+  width: 18.4vw;
+}
+
 .message-div {
+  display: flex;
+
   width: 100vw;
   word-wrap: break-word;
+}
+
+.username-text {
+  font-weight: bold;
+  margin-right: 7.5px;
 }

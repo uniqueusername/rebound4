@@ -21,9 +21,7 @@ io.on('connection', function(socket) {
 
   // client emits a message
   socket.on('new message', function(data) {
-    socket.broadcast.emit('new message', {
-      message: data
-    });
+    socket.broadcast.emit('new message', data);
   });
 
 });

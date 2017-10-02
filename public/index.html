@@ -7,7 +7,9 @@
   </head>
   <body>
     <section id="chat-area"></section>
-    <input id="message-input" placeholder="type here" />
+    <input id="username-input" placeholder="username" />
+    <input id="username-submit" type="submit" value="change username" />
+    <input id="message-input" placeholder="type here" onclick="setUsername()" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src="/client.js"></script>
