@@ -1,0 +1,149 @@
+body {
+  padding: 0;
+  margin: 0;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#main {
+  display: flex;
+  flex-flow: row nowrap;
+
+  height: 90vh;
+  width: 100vw;
+}
+
+#chat-area {
+  height: 100vh;
+  width: 80vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #001B26;
+
+  flex-flow: row wrap;
+}
+
+#user-roster {
+  height: 100vh;
+  width: 20vw;
+  overflow-y: auto;
+  background-color: #456A72;
+}
+
+input {
+  padding: 0;
+  margin: 0;
+}
+
+#message-input {
+  height: 10vh;
+  width: 80vw;
+  border: none;
+  background-color: #0A353F;
+
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  color: #F2F2F2;
+  text-indent: 15px;
+}
+
+#username-overlay {
+  position:absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1c1c1c;
+  background-image: none;
+  background-size: cover;
+  opacity: 1;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight: lighter;
+  font-size: 5em;
+  color: #F2F2F2;
+  text-align: center;
+
+  z-index: 10000;
+}
+
+#username-input {
+  flex-basis: 5vw;
+  width: 500px;
+  align-self: center;
+  padding: 0;
+
+  font-family: 'Lato', sans-serif;
+  font-size: 4em;
+  background-color: transparent;
+  text-align: center;
+  color: #F2F2F2;
+  border: none;
+  border-bottom: 5px solid #F2F2F2;
+
+  transition: width 0.5s;
+  -webkit-transition: width 0.5s;
+}
+
+#username-input:hover {
+  width: 525px;
+}
+
+#username-submit {
+  height: 9.8vh;
+  width: 18.4vw;
+}
+
+.message-div {
+  width: 100vw;
+  margin-top: 5px;
+  word-wrap: break-word;
+}
+
+.message-div-log {
+  width: 100vw;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+  word-wrap: break-word;
+}
+
+.username-text {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Lato', sans-serif;
+  margin-right: 20px;
+  margin-left: 15px;
+  color: #F2F2F2;
+}
+
+.message-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  color: #F2F2F2;
+}
+
+.roster-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  margin-left: 15px;
+  color: #001B26;
+}
+
+.log-text {
+  margin-left: 15px;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #456A72;
+}

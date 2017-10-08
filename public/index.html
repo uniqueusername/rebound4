@@ -3,13 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <title>Rebound4 Chat</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dark.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   </head>
   <body>
-    <section id="chat-area"></section>
-    <input id="username-input" placeholder="username" />
-    <input id="username-submit" type="submit" value="change username" />
-    <input id="message-input" placeholder="type here" onclick="setUsername()" />
+    <div id="username-overlay">
+      <h1>What's your name?</h1>
+      <input id="username-input" />
+    </div>
+
+    <div id="main">
+      <div id="chat-area"></div>
+      <div id="user-roster"><ol id="user-roster-list"></ol></div>
+    </div>
+    <input id="message-input" placeholder="type here..." />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src="/client.js"></script>

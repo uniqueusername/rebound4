@@ -14,14 +14,43 @@ server.listen(port, function() {
 app.use(express. static(path.join(__dirname, 'public')));
 
 // chatroom
-
-var users = {};
+users = {};
 
 io.on('connection', function(socket) {
 
   // client emits a message
   socket.on('new message', function(data) {
-    socket.broadcast.emit('new message', data);
+    if (data.message == "" || data.message.split(" ").join("") == "" || data.message.includes("<") || data.message.includes(">")) {
+      return;
+    } else if (data.username == "" || data.username.split(" ").join("") == "" || data.username.includes("<") || data.username.includes(">")) {
+      data.username = "mlg ghost hackerman";
+      socket.broadcast.emit('new message', data);
+    } else {
+      socket.broadcast.emit('new message', data);
+    }
+  });
+
+  socket.on('new connection', function(username) {
+    users[socket.client.conn.id] = { username: username };
+
+    // compile user roster
+    var userSockets = Object.keys(users);
+    var userRoster = [];
+    for (var i = 0; i < userSockets.length; i++) {
+      userRoster.push(users[userSockets[i]].username);
+    }
+
+    socket.emit('send roster', userRoster);
+    socket.broadcast.emit('new connection', username);
+  });
+
+  socket.on('disconnect', function() {
+    if (users[socket.client.conn.id] != undefined) {
+      socket.broadcast.emit('user disconnected', users[socket.client.conn.id].username);
+      delete users[socket.client.conn.id];
+    } else {
+      return;
+    }
   });
 
 });
