@@ -10,16 +10,18 @@ body {
   display: flex;
   flex-flow: row nowrap;
 
-  height: 90vh;
+  height: 92.5vh;
   width: 100vw;
 }
 
 #chat-area {
-  height: 100vh;
+  height: 92.5vh;
   width: 80vw;
   overflow-y: auto;
   overflow-x: hidden;
   background-color: #001B26;
+  background-image: url("http://fprimecapital.com/assets/2015/02/16_RGFyayBhYnN0cmFjdCBiYWNrZ3JvdW5kIHBvbHlnb24uanBn.jpg");
+  background-size: cover;
 
   flex-flow: row wrap;
 }
@@ -27,8 +29,9 @@ body {
 #user-roster {
   height: 100vh;
   width: 20vw;
+  max-width: 20vw;
   overflow-y: auto;
-  background-color: #456A72;
+  background-color: #174F5F;
 }
 
 input {
@@ -37,7 +40,7 @@ input {
 }
 
 #message-input {
-  height: 10vh;
+  height: 7.5vh;
   width: 80vw;
   border: none;
   background-color: #0A353F;
@@ -49,7 +52,7 @@ input {
 }
 
 #username-overlay {
-  position:absolute;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -57,7 +60,6 @@ input {
   background-color: #1c1c1c;
   background-image: none;
   background-size: cover;
-  opacity: 1;
 
   display: flex;
   flex-flow: column nowrap;
@@ -65,7 +67,13 @@ input {
   align-content: center;
   justify-content: center;
 
+  transition: opacity 300ms ease-in;
+
   z-index: 9999;
+}
+.sick-fade-bro {
+  opacity: 0;
+  pointer-events: none;
 }
 
 h1 {
@@ -106,8 +114,9 @@ h1 {
 }
 
 .message-div {
-  width: 100vw;
+  width: 100%;
   margin-top: 5px;
+  margin-bottom: 5px;
   word-wrap: break-word;
 }
 

@@ -1,4 +1,4 @@
-// configuration
+﻿// configuration
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -11,7 +11,7 @@ server.listen(port, function() {
 });
 
 // routing
-app.use(express. static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // chatroom
 users = {};
@@ -20,9 +20,9 @@ io.on('connection', function(socket) {
 
   // client emits a message
   socket.on('new message', function(data) {
-    if (data.message == "" || data.message.split(" ").join("") == "" || data.message.includes("<") || data.message.includes(">")) {
+    if (data.message == "" || data.message.split(" ").join("") == "" || data.message.includes("<") || data.message.includes(">") || data.message.includes("　")) {
       return;
-    } else if (data.username == "" || data.username.split(" ").join("") == "" || data.username.includes("<") || data.username.includes(">")) {
+    } else if (data.username == "" || data.username.split(" ").join("") == "" || data.username.includes("<") || data.username.includes(">") || data.username.includes("　")) {
       data.username = "mlg ghost hackerman";
       socket.broadcast.emit('new message', data);
     } else {

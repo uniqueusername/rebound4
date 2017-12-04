@@ -1,4 +1,4 @@
-// initialize socket.io
+﻿// initialize socket.io
 var socket = io();
 
 // define document elements
@@ -9,7 +9,7 @@ var userRoster = document.getElementById("user-roster");
 var userRosterList = document.getElementById("user-roster-list");
 var usernameOverlay = document.getElementById("username-overlay");
 
-var backgrounds = ["https://i.imgur.com/oo8qslP.gif", "https://i.imgur.com/mhVYyuH.gif", "https://i.imgur.com/cY6deBb.gif", "https://i.imgur.com/8yqi7xF.gif", "https://i.imgur.com/liXwMRY.gif", "https://i.imgur.com/X6xVLmk.gif", "https://i.imgur.com/GSYoaDs.gif", "https://i.imgur.com/2J9z1Ue.gif", "https://i.imgur.com/TASTgLM.gif"]
+var backgrounds = ["https://i.imgur.com/oo8qslP.gif", "https://i.imgur.com/mhVYyuH.gif", "https://i.imgur.com/cY6deBb.gif", "https://i.imgur.com/8yqi7xF.gif", "https://i.imgur.com/liXwMRY.gif", "https://i.imgur.com/X6xVLmk.gif", "https://i.imgur.com/GSYoaDs.gif", "https://i.imgur.com/2J9z1Ue.gif", "https://i.imgur.com/TASTgLM.gif"];
 messageInput.value = "";
 usernameInput.value = "";
 usernameInput.focus();
@@ -29,7 +29,11 @@ function sendMessage() {
     var message = messageInput.value;
 
     if (message.includes("<") || message.includes(">")) {
-      alert("The < and > tags are blacklisted to prevent markup and script injection. Your message was not sent.");
+      log("The < and > tags are blacklisted to prevent markup and script injection. Your message was not sent.");
+      messageInput.value = "";
+    } else if (message.includes("　")) {
+      log("Really? Nice try.");
+      messageInput.value = "";
     } else if (message == "" || message.split(" ").join("") == "") {
       return;
     } else {
@@ -57,7 +61,7 @@ function setUsername() {
   if (usernameInput.value) {
     if (usernameInput.value.includes("<") || usernameInput.value.includes(">")) {
       alert("The < and > tags are blacklisted to prevent markup and script injection. Your username was not set.");
-    } else if (usernameInput.value == "" || usernameInput.value.split(" ").join("") == "" || usernameInput.value == undefined) {
+    } else if (usernameInput.value == "" || usernameInput.value.split(" ").join("") == "" || usernameInput.value == undefined || usernameInput.value.includes("　")) {
       return;
     } else {
       user.name = usernameInput.value;
@@ -71,9 +75,7 @@ function setUsername() {
 // fade out the username overlay
 function fadeUsernameOverlay() {
   messageInput.focus();
-  usernameOverlay.style.opacity = 1;
-  var usernameFade = setInterval(function() { usernameOverlay.style.opacity = usernameOverlay.style.opacity - 0.02; }, 1);
-  setTimeout(function() { clearInterval(usernameFade); usernameOverlay.style.width = 0; usernameOverlay.removeChild(usernameInput); }, 1100);
+  usernameOverlay.classList.add('sick-fade-bro');
 }
 
 // adds message element to page
@@ -84,10 +86,10 @@ function addChatMessage(data, options) {
   messageDiv.setAttribute("class", "message-div");
   usernameText = document.createElement("span");
   usernameText.setAttribute("class", "username-text");
-  usernameText.innerHTML = data.username;
+  usernameText.innerText = data.username;
   messageText = document.createElement("span");
   messageText.setAttribute("class", "message-text");
-  messageText.innerHTML = data.message;
+  messageText.innerText = data.message;
   messageDiv.appendChild(usernameText);
   messageDiv.appendChild(messageText);
   chatArea.appendChild(messageDiv);
@@ -130,7 +132,7 @@ document.onkeypress = function(e) {
     if (usernameSet == true) {
       sendMessage();
     } else {
-      setUsername()
+      setUsername();
       messageInput.value = "";
     }
   }
